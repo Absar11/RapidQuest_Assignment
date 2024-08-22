@@ -6,14 +6,16 @@ require("dotenv").config();
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const customerRoutes = require("./routes/customerRoutes");
+const salesRoutes = require("./routes/salesRoutes");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/products", productRoutes);
-app.use("/orders", orderRoutes);
-app.use("/customers", customerRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/customers", customerRoutes);
+app.use("/api/sales", salesRoutes); // Add the sales route here
 
 app.get("/", (req, res) => {
   res.send("SERVER IS RUNNING");

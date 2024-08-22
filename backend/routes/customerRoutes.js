@@ -1,11 +1,17 @@
 // routes/customerRoutes.js
 const express = require("express");
-const { getAllCustomers } = require("../controllers/customerController");
+const {
+  getNewCustomers,
+  getRepeatCustomers,
+  getCustomerDistribution,
+  getCustomerLifetimeValue,
+} = require("../controllers/customerController");
 
 const router = express.Router();
 
-router.get("/", getAllCustomers);
-
-// Add other customer-related routes
+router.get("/new-customers", getNewCustomers);
+router.get("/repeat-customers", getRepeatCustomers);
+router.get("/customer-distribution", getCustomerDistribution);
+router.get("/customer-lifetime-value", getCustomerLifetimeValue);
 
 module.exports = router;
