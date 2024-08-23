@@ -17,6 +17,10 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/sales", salesRoutes); // Add the sales route here
 
+app.use("/", (req, res) => {
+  res.send("server is running");
+});
+
 app.get("/", (req, res) => {
   res.send("SERVER IS RUNNING");
 });
