@@ -9,7 +9,7 @@ import {
     Title,
     Tooltip,
     Legend,
-    Filler
+    Filler // Import the Filler plugin
 } from 'chart.js';
 import useCommon from '../hooks/useCommon';
 import Loader from "../Common/Loader";
@@ -18,18 +18,12 @@ import Loader from "../Common/Loader";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const SalesChart = () => {
-    const axiosCommon = useCommon();
-    const [salesData, setSalesData] = useState({
-        daily: [],
-        monthly: [],
-        yearly: [],
-        quarterly: []
-    });
+    let axiosCommon = useCommon();
+    const [salesData, setSalesData] = useState({});
     const [loading, setLoading] = useState(true);
     const [interval, setInterval] = useState('daily'); // Default to 'daily'
 
     useEffect(() => {
-        // Fetch sales data from the API
         const fetchData = async () => {
             try {
                 const response = await axiosCommon.get('/sales/all-intervals');
@@ -43,7 +37,10 @@ const SalesChart = () => {
         fetchData();
     }, [axiosCommon]);
 
-    // Prepare chart data for Line chart
+    const handleIntervalChange = (e) => {
+        setInterval(e.target.value);
+    };
+
     const prepareChartData = (data, label) => ({
         labels: data.map(item => item._id),
         datasets: [
@@ -52,12 +49,11 @@ const SalesChart = () => {
                 data: data.map(item => item.totalSales),
                 borderColor: 'rgba(75,192,192,1)',
                 backgroundColor: 'rgba(75,192,192,0.2)',
-                fill: true
+                fill: true, // This requires the Filler plugin
             }
         ]
     });
 
-    // Chart options
     const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
@@ -78,39 +74,25 @@ const SalesChart = () => {
         }
     };
 
-    const handleIntervalChange = (e) => {
-        setInterval(e.target.value);
-    };
-
     const currentData = salesData[interval] || [];
 
     return (
         <>
-            {/* <hr style={{ marginTop: "150px" }} /> */}
-            {loading ? (
-                <Loader />
-            ) : (
-                <div className="chart-container" style={{ position: 'relative', height: '400px', width: '100%' }}>
-                    <h2>Sales Over Time</h2>
+            {loading ? <Loader /> :
+                <div style={{ width: '95%', height: '100vh' }} className="chart-container">
+                    <h1>Sales Over Time</h1>
                     <div>
                         <label htmlFor="interval-select">Select Interval: </label>
-                        <select
-                            id="interval-select"
-                            value={interval}
-                            onChange={handleIntervalChange}
-                        >
+                        <select id="interval-select" value={interval} onChange={handleIntervalChange}>
                             <option value="daily">Daily</option>
                             <option value="monthly">Monthly</option>
                             <option value="yearly">Yearly</option>
                             <option value="quarterly">Quarterly</option>
                         </select>
                     </div>
-                    <Line
-                        data={prepareChartData(currentData, interval.charAt(0).toUpperCase() + interval.slice(1))}
-                        options={chartOptions}
-                    />
+                    <Line data={prepareChartData(currentData, interval.charAt(0).toUpperCase() + interval.slice(1))} options={chartOptions} />
                 </div>
-            )}
+            }
         </>
     );
 };
