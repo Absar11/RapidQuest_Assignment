@@ -1,64 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import useCommon from '../hooks/useCommon';
 import Loader from "../Common/Laoder"
 
-const GrowthSalesChart = () => {
+const RepeatCustomersChart = () => {
     const axiosCommon = useCommon();
-    const [growthData, setGrowthData] = useState({
+    const [repeatCustomersData, setRepeatCustomersData] = useState({
         daily: [],
         monthly: [],
-        yearly: [],
-        quarterly: []
+        quarterly: [],
+        yearly: []
     });
     const [loading, setLoading] = useState(true);
     const [interval, setInterval] = useState('daily'); // Default to 'daily'
 
     useEffect(() => {
-        // Fetch sales growth data from the API
-        const fetchGrowthData = async () => {
+        const fetchRepeatCustomersData = async () => {
             try {
-                const response = await axiosCommon.get('/sales/growth');
-                setGrowthData(response.data);
+                const response = await axiosCommon.get('/customers/repeat-customers');
+                setRepeatCustomersData(response.data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching sales growth data:', error);
+                console.error('Error fetching repeat customers data:', error);
             }
         };
 
-        fetchGrowthData();
+        fetchRepeatCustomersData();
     }, [axiosCommon]);
 
-    // Prepare chart data for Line chart
+    // Prepare chart data function
     const prepareChartData = (data, label) => {
         return {
-            labels: data.map(item => item._id), // x-axis labels (dates)
+            labels: data.map(item => item._id.day || item._id.month || item._id.quarter || item._id.year),
             datasets: [
                 {
-                    label: `${label} Sales Growth Rate (%)`,
-                    data: data.map(item => item.growthRate || 0), // y-axis data (growth rate)
-                    borderColor: 'rgba(255,99,132,1)',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
+                    label: `${label} Repeat Customers`,
+                    data: data.map(item => item.purchaseCount),
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     fill: true,
-                }
-            ]
+                },
+            ],
         };
     };
 
-    // Chart options
+    // Chart options configuration
     const chartOptions = {
         scales: {
             y: {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Growth Rate (%)'
+                    text: 'Number of Repeat Customers'
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: 'Time Period'
+                    text: 'Time'
                 }
             }
         }
@@ -68,15 +67,15 @@ const GrowthSalesChart = () => {
         setInterval(e.target.value);
     };
 
-    const currentData = growthData[interval] || [];
+    const currentData = repeatCustomersData[interval] || [];
 
     return (
         <>
             {loading ? (
                 <Loader />
             ) : (
-                <div style={{ width: '95%', height: '100vh', marginTop: "150px" }}>
-                    <h2>Sales Growth Rate Over Time</h2>
+                <div style={{ width: '95%', height: '100vh', marginTop: '150px' }}>
+                    <h2>Repeat Customers Over Time</h2>
 
                     <div>
                         <label htmlFor="interval-select">Select Interval: </label>
@@ -87,8 +86,8 @@ const GrowthSalesChart = () => {
                         >
                             <option value="daily">Daily</option>
                             <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
                             <option value="quarterly">Quarterly</option>
+                            <option value="yearly">Yearly</option>
                         </select>
                     </div>
 
@@ -102,4 +101,4 @@ const GrowthSalesChart = () => {
     );
 };
 
-export default GrowthSalesChart;
+export default RepeatCustomersChart;

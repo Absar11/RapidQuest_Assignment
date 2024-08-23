@@ -12,6 +12,7 @@ import {
     Filler // Import the Filler plugin
 } from 'chart.js';
 import useCommon from '../hooks/useCommon';
+import Loader from "../Common/Laoder";
 
 // Register the necessary components, including the Filler plugin
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -77,7 +78,7 @@ const SalesChart = () => {
 
     return (
         <>
-            {loading ? <h1>Loading...</h1> :
+            {loading ? <Loader /> :
                 <div style={{ width: '95%', height: '100vh' }} className="chart-container">
                     <h1>Sales Over Time</h1>
                     <div>
