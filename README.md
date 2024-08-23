@@ -1,63 +1,113 @@
-# RapidQuest Assignment
+# Fullstack Assignment - RapidQuest
 
-## Overview
+Your mission, should you choose to accept it, will be to build a data visualization web
+application that can analyze e-commerce data from a sample Shopify store stored in
+MongoDB. You will build an API layer that reads the data from the database and performs the
+necessary queries to manipulate data and serve it to the front end through a REST API. The
+front end should connect to your API and visualize the data using Chart.js or a similar
+JavaScript visualization library. The project is divided into two parts: frontend and backend.
 
-RapidQuestAssignment is a MERN (MongoDB, Express, React, Node.js) full-stack application. This project demonstrates the integration of a backend with Node.js, Express, and MongoDB with a frontend developed using Vite and React.
+## Table of Contents
 
-## Project Structure
+1. Project Overview
+2. Technologies Used
+4. Getting Started
+5. Prerequisites
+6. Installation
+7. Frontend
+8. Running the Frontend
+9. Backend
+10. Running the Backend
+11. Contact
 
-- `backend/`: Contains the Node.js and Express server with MongoDB integration.
-- `frontend/`: Contains the Vite-based React application.
+## Project Overview
+
+Your mission, should you choose to accept it, will be to build a data visualization web
+application that can analyze e-commerce data from a sample Shopify store stored in
+MongoDB. You will build an API layer that reads the data from the database and performs the
+necessary queries to manipulate data and serve it to the front end through a REST API. The
+front end should connect to your API and visualize the data using Chart.js or a similar
+JavaScript visualization library.
+
+
+## Technologies Used
+
+- **Frontend:**
+  - React
+  - Axios
+  - React Toastify (for notifications)
+  - CSS for styling
+  - React-icons
+  - Chart.js
+  
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB (Mongoose for ORM)
 
 ## Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine.
-
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [MongoDB](https://www.mongodb.com/) (Local or a cloud instance)
-- [Git](https://git-scm.com/)
+- **Node.js** and **npm** installed on your machine.
+- **MongoDB** installed and running.
+- **Git** installed on your machine.
 
 ### Installation
 
-1. **Clone the Repository**
+1. **Clone the repository:**
 
-   git clone git@github.com:Absar11/RapidQuest_Assignment.git
-   cd RapidQuest_Assignment
+git clone https://git@github.com:Absar11/RapidQuest_Assignment.git
 
-2- Backend Setup
-
-Navigate to the backend directory: cd backend
-Install backend dependencies: npm install
-Create a .env file in the backend directory with the following content:
-
-env
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-
-Start the backend server: npm start
+cd RapidQuest-Assignment
 
 
-3- Frontend Setup
 
-Navigate to the frontend directory: cd ../frontend
+2. **Install dependencies for frontend and backend:**
 
-Install frontend dependencies: npm install
+   - **Frontend:**
+     cd frontend
+     npm install
+     
+   - **Backend:**
 
-Start the frontend development server: npm run dev
+     cd backend
+     npm install
 
-The frontend should now be available at http://localhost:5173
+## Frontend
 
-Usage
-Backend: The server listens on port 5000 (or another port specified in the .env file) and handles API requests, interacting with MongoDB.
-Frontend: The Vite development server provides a React application that communicates with the backend API.
+### Running the Frontend
+
+To start the frontend development server:
+
+cd frontend
+npm run dev
+
+The frontend should now be running on `http://localhost:5173`.
+
+## Backend
+
+### Folder Structure
+
+The backend folder contains the Node.js application.
+
+### Running the Backend
+
+To start the backend server:
+
+1. **Ensure MongoDB is running on your machine.**
+2. **Start the backend server:**
+3. **Don't forget to create .env file in backend folder set MongoURI and PORT NO.**
+
+   cd backend
+   npm start
+
+The backend should now be running on `http://localhost:5000`.
 
 
-Ensure that your MONGO_URI and other environment variables are correctly configured on your deployment platform.
+## Contact
+For any questions or concerns, feel free to reach out.
 
-Contact
-For any questions or feedback, please contact:
-
-Email: siddiqui.mr10@gmail.com
+- **Email:** siddiqui.mr10@gmail.com
+- **GitHub:** https://github.com/Absar11
 
