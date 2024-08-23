@@ -71,11 +71,11 @@ const RepeatCustomersChart = () => {
 
     return (
         <>
-            <hr style={{ marginTop: "100px" }} />
+            <hr />
             {loading ? (
                 <Loader />
             ) : (
-                <div style={{ width: '95%', height: '100vh', marginTop: '50px' }}>
+                <div className="chart-container">
                     <h2>Repeat Customers Over Time</h2>
 
                     <div>

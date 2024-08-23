@@ -72,11 +72,11 @@ const GrowthSalesChart = () => {
 
     return (
         <>
-            <hr style={{ marginTop: "100px" }} />
+            <hr style={{ marginTop: "150px" }} />
             {loading ? (
                 <Loader />
             ) : (
-                <div style={{ width: '95%', height: '100vh', marginTop: "50px" }}>
+                <div className='chart-container '>
                     <h2>Sales Growth Rate Over Time</h2>
 
                     <div>

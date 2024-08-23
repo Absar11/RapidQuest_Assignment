@@ -74,11 +74,22 @@ button:focus-visible {
   padding: 2rem 1rem;
 }
 
+.chart-container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2em;
   }
   .main-container {
     padding: 1rem;
+  }
+  .chart-container {
+    padding: 0.5rem;
   }
 }

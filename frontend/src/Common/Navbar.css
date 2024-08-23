@@ -24,7 +24,7 @@ body {
 }
 
 .navbar-brand {
-    color: #fff;
+    color: #ff6347;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -50,7 +50,7 @@ body {
 }
 
 .navbar-links a:hover {
-    color: #ff6347; /* Add a hover effect color */
+    color: #ff6347;
     text-decoration: underline;
 }
 
@@ -64,8 +64,23 @@ body {
     transition: background-color 0.3s;
 }
 
+.navbar-brand:hover{
+    color: #ff4500;
+}
+
 .btn.contact-btn:hover {
     background-color: #ff4500;
+}
+
+/* Hamburger Menu Styles */
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    font-size: 1.5rem; /* Adjust the size of the icon */
+    color: white; /* Icon color */
 }
 
 @media (max-width: 768px) {
@@ -77,11 +92,21 @@ body {
     .navbar-links {
         flex-direction: column;
         gap: 0.5rem;
+        width: 100%;
+        display: none;
+    }
+
+    .navbar-links.active {
+        display: flex;
     }
 
     .btn.contact-btn {
         margin-top: 1rem;
         width: 100%;
         text-align: center;
+    }
+
+    .navbar-toggle {
+        display: block; /* Ensure this is set to block on small screens */
     }
 }

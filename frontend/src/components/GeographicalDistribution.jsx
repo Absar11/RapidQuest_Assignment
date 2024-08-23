@@ -132,8 +132,8 @@ const GeographicalDistribution = () => {
 
     return (
         <>
-            <hr style={{ marginTop: "100px" }} />
-            <div style={{ width: '95%', height: '100vh', marginTop: "50px" }}>
+            <hr />
+            <div className="chart-container">
                 <h2>Geopgraphical Distribution of Customers</h2>
                 <MapContainer center={mapCenter} zoom={4} style={{ height: '500px', width: '100%' }}>
 

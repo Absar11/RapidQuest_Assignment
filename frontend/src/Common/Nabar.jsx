@@ -1,10 +1,22 @@
+import React, { useState } from 'react';
 import './Navbar.css';
 
 function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <nav className="navbar">
             <a href="#" className="navbar-brand">RapidQuest</a>
-            <ul className="navbar-links">
+            <button className="navbar-toggle" onClick={toggleMenu}>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+            </button>
+            <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
                 <li><a href="#sales-chart">Sales Chart</a></li>
                 <li><a href="#growth-sales-chart">Growth Sales</a></li>
                 <li><a href="#new-customers-chart">New Customers</a></li>

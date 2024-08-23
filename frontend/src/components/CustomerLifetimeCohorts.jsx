@@ -88,8 +88,8 @@ const CustomerLifetimeCohorts = () => {
 
     return (
         <>
-            <hr style={{ marginTop: "50px", marginBottom: "40px" }} />
-            <div>
+            <hr />
+            <div className="chart-container">
                 <h2>Customer Lifetime Value by Cohorts</h2>
                 {loading ? <Laoder /> : (
                     <Bar data={prepareChartData()} options={chartOptions} />
