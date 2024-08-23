@@ -67,11 +67,13 @@ cd RapidQuest-Assignment
 
    - **Frontend:**
      cd frontend
+     
      npm install
      
    - **Backend:**
 
      cd backend
+     
      npm install
 
 ## Frontend
