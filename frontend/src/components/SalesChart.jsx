@@ -79,7 +79,7 @@ const SalesChart = () => {
     return (
         <>
             {loading ? <Loader /> :
-                <div style={{ width: '95%', height: '100vh' }} className="chart-container">
+                <div className="chart-container">
                     <h1>Sales Over Time</h1>
                     <div>
                         <label htmlFor="interval-select">Select Interval: </label>
