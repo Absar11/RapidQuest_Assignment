@@ -12,7 +12,7 @@ import {
     Filler // Import the Filler plugin
 } from 'chart.js';
 import useCommon from '../hooks/useCommon';
-import Loader from "../Common/Laoder";
+import Loader from "../Common/Loader";
 
 // Register the necessary components, including the Filler plugin
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);

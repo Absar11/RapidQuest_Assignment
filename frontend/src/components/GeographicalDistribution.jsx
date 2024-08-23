@@ -7,7 +7,7 @@ import useCommon from '../hooks/useCommon';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import Laoder from '../Common/Laoder';
+import Laoder from '../Common/Loader';
 
 // Set up the Leaflet default icon options
 delete L.Icon.Default.prototype._getIconUrl;
@@ -131,26 +131,29 @@ const GeographicalDistribution = () => {
         : [20, 0];
 
     return (
-        <div style={{ width: '95%', height: '100vh', marginTop: "150px" }}>
-            <h2>Geopgraphical Distribution of Customers</h2>
-            <MapContainer center={mapCenter} zoom={4} style={{ height: '500px', width: '100%' }}>
+        <>
+            <hr style={{ marginTop: "100px" }} />
+            <div style={{ width: '95%', height: '100vh', marginTop: "50px" }}>
+                <h2>Geopgraphical Distribution of Customers</h2>
+                <MapContainer center={mapCenter} zoom={4} style={{ height: '500px', width: '100%' }}>
 
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {cityData.map((city, index) => {
-                    const location = geocodeCity[city._id] || { lat: 0, lng: 0 };
-                    return (
-                        <Marker key={index} position={[location.lat, location.lng]}>
-                            <Popup>
-                                {city._id}: {city.customerCount} customers
-                            </Popup>
-                        </Marker>
-                    );
-                })}
-            </MapContainer>
-        </div>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                    {cityData.map((city, index) => {
+                        const location = geocodeCity[city._id] || { lat: 0, lng: 0 };
+                        return (
+                            <Marker key={index} position={[location.lat, location.lng]}>
+                                <Popup>
+                                    {city._id}: {city.customerCount} customers
+                                </Popup>
+                            </Marker>
+                        );
+                    })}
+                </MapContainer>
+            </div>
+        </>
 
     );
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import useCommon from '../hooks/useCommon';
-import Loader from "../Common/Laoder"
+import Loader from "../Common/Loader"
 
 const NewCustomersChart = () => {
     const axiosCommon = useCommon();
@@ -72,10 +72,11 @@ const NewCustomersChart = () => {
 
     return (
         <>
+            <hr style={{ marginTop: "100px" }} />
             {loading ? (
                 <Loader />
             ) : (
-                <div style={{ width: '95%', height: '100vh', marginTop: '150px' }}>
+                <div style={{ width: '95%', height: '100vh', marginTop: '50px' }}>
                     <h2>New Customers Over Time</h2>
 
                     <div>
