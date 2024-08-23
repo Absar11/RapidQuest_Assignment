@@ -80,7 +80,7 @@ const SalesChart = () => {
         <>
             {loading ? <Loader /> :
                 <div style={{ width: '95%', height: '100vh' }} className="chart-container">
-                    <h1>Sales Over Time</h1>
+                    <h2>Sales Over Time</h2>
                     <div>
                         <label htmlFor="interval-select">Select Interval: </label>
                         <select id="interval-select" value={interval} onChange={handleIntervalChange}>
